@@ -85,7 +85,6 @@ public class Personen extends JPanel {
         detailRight.setPreferredSize(new Dimension(350, 400));
 
         personPane = new PersonListe(besitzer);
-        //personPane.addListenListener();
         JPanel personPaneH = new JPanel(new BorderLayout());
         JPanel personPaneW = new JPanel(new BorderLayout());
         personPaneH.add(personPane, BorderLayout.WEST);

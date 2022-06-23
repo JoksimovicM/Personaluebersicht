@@ -20,7 +20,7 @@ public class PersonListeModel extends DefaultListModel implements ModelListener 
     private JList liste = new JList<>();
 
     public PersonListeModel() {
-        Facade.getInstance().setModelListener(this);
+        Facade.getInstance().addModelListener(this);
     }
 
     public String getElementAt(int index) {

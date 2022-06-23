@@ -15,7 +15,7 @@ public class Facade {
 
     private static Facade instance;
     private Data data = Data.getInstance();
-    private ModelListener modelListener;
+    private Vector<ModelListener> modelListeners = new Vector<>();
 
     private Facade() {
     }
@@ -27,8 +27,8 @@ public class Facade {
         return instance;
     }
 
-    public void setModelListener(ModelListener modelListener) {
-        this.modelListener = modelListener;
+    public void addModelListener(ModelListener modelListener) {
+        modelListeners.add(modelListener);
     }
 
     public int getAnzahlPersonen() {
@@ -44,7 +44,9 @@ public class Facade {
     }
 
     public void fireChanges() {
-        modelListener.fireContentsChanged(this, 0, -1);
+        for (ModelListener modelListener: modelListeners) {
+            modelListener.fireContentsChanged(this, 0, -1);
+        }
     }
 
     public void createPerson(String firstname, String lastname) {

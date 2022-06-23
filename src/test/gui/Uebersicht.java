@@ -134,7 +134,6 @@ public class Uebersicht extends JPanel {
         //creates panel with title and list of workers
         //H & W mean height & width, used for nested component
         personPane = new PersonListe(besitzer);
-        //personPane = startseite.createList(personPane, "Übersicht:", personPaneList, ref.getPersonen(), 120, 360, 1);
         JPanel personPaneH = new JPanel(new BorderLayout());
         JPanel personPaneW = new JPanel(new BorderLayout());
         personPaneH.add(personPane, BorderLayout.WEST);

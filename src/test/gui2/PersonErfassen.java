@@ -62,14 +62,6 @@ public class PersonErfassen extends JDialog {
             }
         });
         speichern = new JButton("Speichern");
-        speichern.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String text = nameTextField.getText();
-                String[] splited = text.split(" ");
-                dispose();
-            }
-        });
         nameFotoPanel = new JPanel(new GridLayout(2, 2));
         hrAdminPanel = new JPanel(new GridLayout(2, 2));
         hrAdminLeerPanel = new JPanel(new GridLayout(1, 2));
@@ -109,10 +101,17 @@ public class PersonErfassen extends JDialog {
         @Override
         public void actionPerformed(ActionEvent e) {
             Facade f = Facade.getInstance();
-            String fName = nameTextField.getText().split(" ")[0];
-            String lName = nameTextField.getText().split(" ")[1];
-            f.createPerson(fName, lName);
-            self.dispose();
+            String[] splitted = nameTextField.getText().split(" ");
+            if (nameTextField.getText().equals("")) {
+                JOptionPane.showMessageDialog(self, "Must type in a name!");
+            } else if (splitted.length < 2) {
+                JOptionPane.showMessageDialog(self, "Must type in first and last name!");
+            } else {
+                String fName = nameTextField.getText().split(" ")[0];
+                String lName = nameTextField.getText().split(" ")[1];
+                f.createPerson(fName, lName);
+                self.dispose();
+            }
         }
     }
 }
